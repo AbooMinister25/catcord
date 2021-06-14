@@ -8,6 +8,7 @@ If you are interested in contributing to Catcord, follow the guidelines and step
 -   [Poetry](https://python-poetry.org/docs/)
 -   Some experience with [Git](https://git-scm.com/downloads)
 -   [A GitHub Account](https://github.com/join)
+-   [Docker](https://www.docker.com)
 
 ## Quickstart
 
@@ -20,6 +21,11 @@ If you are interested in contributing to Catcord, follow the guidelines and step
 7. Do `git push -u origin branch-name` to push your changes to your forked repo.
 8. Create a PR on the official catcord repo, your code will be reviewed and eventually merged.
 9. FOLLOW THE CONTRIBUTING GUIDELINES BELOW, WE WONT MERGE YOUR PR UNLESS YOU DO.
+
+## Testing
+1. Catcord uses docker and docker-compose for deployment and testing, so make sure that you have a docker ready environment.
+2. Build the docker image by running `docker-compose build`.
+3. Run the docker image by doing `docker-compose up`.
 
 ## Contributing Guidelines
 
