@@ -21,4 +21,4 @@ jobs:
                   poetry install
             - name: Lint with black
               run: |
-                  python3 -m black --test catcord/
+                  poetry run black --test catcord/
