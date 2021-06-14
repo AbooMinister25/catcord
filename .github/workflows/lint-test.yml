@@ -21,4 +21,4 @@ jobs:
                   poetry install
             - name: Lint with black
               run: |
-                  poetry run black --test catcord/
+                  poetry run black --check catcord/
