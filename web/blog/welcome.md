@@ -8,4 +8,4 @@ author_image_url: https://avatars.githubusercontent.com/u/78233879?v=4
 tags: [welcome, catcord]
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet
+Welcome to... Catcord, a free chatroom only accessible through requests to our API. We hope you enjoy it!
