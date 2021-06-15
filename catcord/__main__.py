@@ -10,6 +10,7 @@ app = FastAPI()
 async def home():
     return {"message": "Send a POST request to /token to generate a token."}
 
+
 @app.post("/token")
 async def token():
     token = str(uuid4())

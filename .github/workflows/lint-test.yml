@@ -21,4 +21,4 @@ jobs:
                   poetry install
             - name: Lint with black
               run: |
-                  poetry run flake8 --max-line-length 120 --ignore E203,E712,W503 catcord/
+                  poetry run flake8 --max-line-length 120 --ignore E203,E712,W503,F841 catcord/
