@@ -2,6 +2,10 @@ name: Lint Test
 
 on: [push, pull_request]
 
+defaults:
+  run:
+    working-directory: frontend
+
 jobs:
   lint:
     name: ESLint
