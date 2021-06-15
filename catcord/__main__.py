@@ -1,5 +1,7 @@
 import hashlib
+from loguru import logger
 from uuid import uuid4
+from catcord.db.tasks import get_db
 
 from fastapi import FastAPI
 
