@@ -1,7 +1,7 @@
 import typing
 import asyncpg
 from loguru import logger
-from catcord.core.config import DATABASE_URL
+from backend.core.config import DATABASE_URL
 
 
 async def get_db() -> typing.Optional[asyncpg.Connection]:

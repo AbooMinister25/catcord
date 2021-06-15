@@ -7,7 +7,7 @@ ENV PIP_NO_CACHE_DIR=false \
 RUN pip install -U poetry
 
 # Create working directory
-WORKDIR /catcord
+WORKDIR /backend
 
 # Copy files 
 COPY pyproject.toml poetry.lock ./
