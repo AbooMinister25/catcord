@@ -57,7 +57,7 @@ jobs:
             - name: Install Dependencies
               run: |
                   python3 -m pip install poetry
-                  poetry instalz
+                  poetry install
             - name: Lint with flake8
               run: |
                   poetry run flake8 --max-line-length 120 --ignore E203,E712,W503,F841 catcord/
