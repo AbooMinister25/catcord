@@ -1,11 +1,14 @@
 import time
 import hashlib
-import random
 
+token_count = 0
 
 def gensnowflake():
+    global token_count
     flake = time.time_ns().to_bytes(56, byteorder="big")
-    flake += random.randint(1, 900000).to_bytes(8, byteorder="big")
+    flake += token_count.to_bytes(8, byteorder="big")
+    token_count += 1
+    if token_count == 256: token_count = 0
     return int.from_bytes(flake, byteorder="big")
 
 
