@@ -3,42 +3,61 @@ name: Lint Test
 on: [push, pull_request]
 
 defaults:
-  run:
-    working-directory: frontend
+    run:
+        working-directory: frontend
 
 jobs:
-  lint:
-    name: ESLint
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+    lint:
+        name: ESLint
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v2
 
-      - name: Install Node v14
-        uses: actions/setup-node@v2
-        with:
-          node-version: 14
+            - name: Install Node v14
+              uses: actions/setup-node@v2
+              with:
+                  node-version: 14
 
-      - name: Install dependencies
-        run: yarn
+            - name: Install dependencies
+              run: yarn
 
-      - name: Run ESLint
-        run: yarn next lint
-    
-  format:
-    name: Prettier
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+            - name: Run ESLint
+              run: yarn next lint
 
-      - name: Install Node v14
-        uses: actions/setup-node@v2
-        with:
-          node-version: 14
+    format:
+        name: Prettier
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v2
 
-      - name: Install dependencies
-        run: yarn
+            - name: Install Node v14
+              uses: actions/setup-node@v2
+              with:
+                  node-version: 14
 
-      - name: Check With Prettier
-        run: yarn prettier --check .
+            - name: Install dependencies
+              run: yarn
+
+            - name: Check With Prettier
+              run: yarn prettier --check .
+
+    lintbackend:
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                python-version: [3.8, 3.9]
+        steps:
+            - uses: actions/checkout@v2
+            - name: Set up Python ${{ matrix.python-version }}
+              uses: actions/setup-python@v2
+              with:
+                  python-version: ${{ matrix.python-version }}
+            - name: Install Dependencies
+              run: |
+                  python3 -m pip install poetry
+                  poetry instalz
+            - name: Lint with flake8
+              run: |
+                  poetry run flake8 --max-line-length 120 --ignore E203,E712,W503,F841 catcord/
