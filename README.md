@@ -8,7 +8,7 @@
     <img src="https://github.com/cat-dev-group/catcord/workflows/Pytest Testing/badge.svg">
 </p>
 
-Welcome to _Catcord_. Catcord is a minimal chat application created by the Cat Dev Team, with no default interface, UI, or anything, just a set of endpoints. Anyone can create a client to interface with our endpoints. Catcord ships with a basic default client you can use to interact with the API, which is built using React.js and Tauri.
+Welcome to _Catcord_. Catcord is a minimal chat application created by the Cat Dev Team, that ships with a minimal default interface. In its essence catcord is just a set of endpoints. Anyone can create a client to interface with our endpoints. Catcord ships with a basic default client you can use to interact with the API, which is built using React.js and Tauri.
 
 ### Contributing
 
