@@ -1,3 +1,4 @@
+import typing
 import asyncpg
 from loguru import logger
 
@@ -45,8 +46,7 @@ async def new_message(
     logger.info("Attempting to add a new message to DB")
     try:
         await connection.execute(
-            f"INSERT INTO MESSAGES VALUES('{message_id}', \
-            '{timesent}', '{sender_id}', '{server_id}', '{message_content}');"
+            f"INSERT INTO MESSAGES VALUES('{message_id}', '{time_sent}', '{sender_id}', '{server_id}', '{message_content}');"
         )
         logger.info("Successfully added a new message to DB")
     except Exception as e:
