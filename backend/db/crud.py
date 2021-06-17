@@ -5,7 +5,7 @@ from loguru import logger
 
 async def new_user(
     connection: asyncpg.Connection,
-    id: str,
+    user_id: str,
     tokenhash: str,
     username: str,
     passhash: str,
@@ -13,7 +13,7 @@ async def new_user(
     logger.info("Attempting to add a new user to DB")
     try:
         await connection.execute(
-            f"INSERT INTO USERS VALUES({id}, '{tokenhash}', '{username}', '{passhash}');"
+            f"INSERT INTO USERS VALUES({user_id}, '{tokenhash}', '{username}', '{passhash}');"
         )
         logger.info("Successfully added a new user to DB")
     except Exception as e:
@@ -46,7 +46,7 @@ async def new_message(
     logger.info("Attempting to add a new message to DB")
     try:
         await connection.execute(
-            f"INSERT INTO MESSAGES VALUES('{message_id}', '{timesent}', '{sender_id}', '{server_id}', '{message_content}');"
+            f"INSERT INTO MESSAGES VALUES('{message_id}', '{time_sent}', '{sender_id}', '{server_id}', '{message_content}');"
         )
         logger.info("Successfully added a new message to DB")
     except Exception as e:
