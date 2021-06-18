@@ -23,7 +23,7 @@ If you are interested in contributing to Catcord, follow the guidelines and step
 ## Frontend
 1. Make a fork of the catcord github repository.
 2. Clone the catcord github repo you just forked by running `git clone https://www.github.com/YourGithubUsername/catcord` in your terminal.
-3. Run `harn set version berry && yarn set version latest` to use Yarn 2.
+3. Run `yarn set version berry && yarn set version latest` to use Yarn 2.
 4. Install dependencies by running `yarn`
 4. Make your changes/additions to the code.
 5. Run `git add .` to stage your changes.
