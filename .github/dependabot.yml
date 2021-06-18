@@ -9,4 +9,13 @@ updates:
       - "Area: Frontend"
     reviewers: ["dawnofmidnight"]
     assignees: ["dawnofmidnight"]
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    labels:
+      - "Area: Dependencies"
+      - "Area: Backend"
+    reviewers: ["kronifer"]
+    assignees: ["kronifer"]
  
