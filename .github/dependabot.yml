@@ -4,9 +4,9 @@ updates:
     directory: "/frontend"
     schedule:
       interval: "daily"
-    assignees: "dawnofmidnight"
     labels:
       - "Area: Dependencies"
       - "Area: Frontend"
-    reviewers: "dawnofmidnight"
+    reviewers: ["dawnofmidnight"]
+    assignees: ["dawnofmidnight"]
  

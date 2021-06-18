@@ -1,12 +1,10 @@
-import hashlib
-from loguru import logger
-from uuid import uuid4
 import backend.db.tasks as tasks
 import backend.db.crud as crud
 import backend.core.actions as actions
+import hashlib
+from uuid import uuid4
 from fastapi import FastAPI, Header, Response
 from pydantic import BaseModel
-from typing import Optional
 import time
 
 app = FastAPI()
@@ -62,7 +60,8 @@ async def new_server(
         if userdata is None:
             response.status_code = 403
             return {
-                "error": "Token supplied is invalid. Please correct your token or get one by sending a post request to /token ."
+                "error": "Token supplied is invalid. \
+                Please correct your token or get one by sending a post request to /token ."
             }
         serverid = str(actions.gensnowflake())
         await crud.new_server(conn, serverid, userdata[0], serverinfo.name)
@@ -86,7 +85,8 @@ async def new_message(
         if userdata is None:
             response.status_code = 403
             return {
-                "error": "Token supplied is invalid. Please correct your token or get one by sending a post request to /token ."
+                "error": "Token supplied is invalid. \
+                Please correct your token or get one by sending a post request to /token ."
             }
         messageid = str(actions.gensnowflake())
 
@@ -114,7 +114,8 @@ async def get_messages(
         userdata = await conn.fetchrow(f"SELECT * FROM USERS WHERE TOKEN='{tokenhash}'")
         if userdata is None:
             return {
-                "error": "Token supplied is invalid. Pleasse correct your token or get one by sending a post request to /tokens ."
+                "error": "Token supplied is invalid. \
+                    Please correct your token or get one by sending a post request to /tokens ."
             }
 
         messages = await crud.get_messages(conn, server_id)
