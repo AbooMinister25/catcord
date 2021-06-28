@@ -2,7 +2,7 @@ import backend.db.tasks as tasks
 import backend.db.crud as crud
 import backend.core.actions as actions
 from backend.schemas import UserCreateBody
-from fastapi import APIRouter, Header, Response
+from fastapi import APIRouter
 from uuid import uuid4
 import hashlib
 
