@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from backend.routers import servers, messages, token
+from backend.endpoints import servers, messages, token
 
 app = FastAPI()
 
