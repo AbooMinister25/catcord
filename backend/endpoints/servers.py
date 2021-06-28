@@ -10,7 +10,7 @@ router = APIRouter()
 
 @router.post("/new_server")
 async def new_server(
-    response: Response, serverinfo: NewServerBody, Auth: str = Header(None)
+        response: Response, serverinfo: NewServerBody, Auth: str = Header(None)
 ):
     if Auth is None:
         response.status_code = 403

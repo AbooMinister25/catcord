@@ -10,7 +10,7 @@ router = APIRouter()
 
 @router.post("/new_message")
 async def new_message(
-    response: Response, messageinfo: NewMessageBody, Auth: str = Header(None)
+        response: Response, messageinfo: NewMessageBody, Auth: str = Header(None)
 ):
     if Auth is None:
         response.status_code = 403
@@ -44,7 +44,7 @@ async def new_message(
 
 @router.get("/get_messages")
 async def get_messages(
-    response: Response, server_id: str = None, Auth: str = Header(None)
+        response: Response, server_id: str = None, Auth: str = Header(None)
 ):
     if Auth is None:
         return {"error": "No token supplied. Please submit a token."}
