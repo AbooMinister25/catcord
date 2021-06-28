@@ -1,28 +1,28 @@
 version: "3.9"
 
 services:
-    db:
-        image: postgres
-        volumes:
-            - postgres_data:/var/lib/postgresql/data/
-            - ./backend/init.sql:/docker-entrypoint-initdb.d/init.sql
-        ports:
-            - 5432:5432
-        env_file:
-            - ./backend/.env
-        environment:
-            - POSTGRES_DB=postgres
-            - POSTGRES_USER=postgres
-            - POSTGRES_PASSWORD=postgres
-    web:
-        build: .
-        command: gunicorn backend.main:app -w 4 -k uvicorn.workers.UvicornWorker --bind 0.0.0.0
-        volumes:
-            - .:/backend
-        env_file:
-            - ./backend/.env
-        ports:
-            - "8000:8000"
+  db:
+    image: postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+      - ./backend/init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - 5432:5432
+    env_file:
+      - ./backend/.env
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+  web:
+    build: .
+    command: gunicorn backend.main:app -w 4 -k uvicorn.workers.UvicornWorker --bind 0.0.0.0
+    volumes:
+      - .:/backend
+    env_file:
+      - ./backend/.env
+    ports:
+      - "8000:8000"
 
 volumes:
-    postgres_data:
+  postgres_data:
