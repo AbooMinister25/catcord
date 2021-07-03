@@ -345,9 +345,9 @@
   dependencies:
     defer-to-connect "^2.0.0"
 
-"@tauri-apps/cli@^1.0.0-beta.4":
-  version "1.0.0-beta.4"
-  resolved "https://registry.yarnpkg.com/@tauri-apps/cli/-/cli-1.0.0-beta.4.tgz#626a07037432f9bdb8d8aedc1ab8f73636f22c92"
+"@tauri-apps/cli@^1.0.0-beta.5":
+  version "1.0.0-beta.5"
+  resolved "https://registry.yarnpkg.com/@tauri-apps/cli/-/cli-1.0.0-beta.5.tgz#b71007a9fa18617ffe1671f339bb3b6cbf8549c2"
   dependencies:
     "@tauri-apps/toml" "2.2.4"
     chalk "4.1.1"
@@ -403,13 +403,9 @@
     "@types/estree" "*"
     "@types/json-schema" "*"
 
-"@types/estree@*":
+"@types/estree@*", "@types/estree@^0.0.48":
   version "0.0.48"
   resolved "https://registry.yarnpkg.com/@types/estree/-/estree-0.0.48.tgz#18dc8091b285df90db2f25aa7d906cfc394b7f74"
-
-"@types/estree@^0.0.47":
-  version "0.0.47"
-  resolved "https://registry.yarnpkg.com/@types/estree/-/estree-0.0.47.tgz#d7a51db20f0650efec24cd04994f523d93172ed4"
 
 "@types/http-cache-semantics@*":
   version "4.0.0"
@@ -431,9 +427,9 @@
   dependencies:
     "@types/node" "*"
 
-"@types/node@*", "@types/node@^15.12.5":
-  version "15.12.5"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-15.12.5.tgz#9a78318a45d75c9523d2396131bd3cca54b2d185"
+"@types/node@*", "@types/node@^15.14.0":
+  version "15.14.0"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-15.14.0.tgz#74dbf254fb375551a9d2a71faf6b9dbc2178dc53"
 
 "@types/prop-types@*":
   version "15.7.3"
@@ -445,9 +441,9 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react@*", "@types/react@^17.0.11":
-  version "17.0.11"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.11.tgz#67fcd0ddbf5a0b083a0f94e926c7d63f3b836451"
+"@types/react@*", "@types/react@^17.0.13":
+  version "17.0.13"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.13.tgz#6b7c9a8f2868586ad87d941c02337c6888fb874f"
   dependencies:
     "@types/prop-types" "*"
     "@types/scheduler" "*"
@@ -610,9 +606,9 @@ acorn@^7.4.0:
   version "7.4.1"
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-7.4.1.tgz#feaed255973d2e77555b83dbc08851a6c63520fa"
 
-acorn@^8.2.1:
-  version "8.4.0"
-  resolved "https://registry.yarnpkg.com/acorn/-/acorn-8.4.0.tgz#af53266e698d7cffa416714b503066a82221be60"
+acorn@^8.4.1:
+  version "8.4.1"
+  resolved "https://registry.yarnpkg.com/acorn/-/acorn-8.4.1.tgz#56c36251fc7cabc7096adc18f05afe814321a28c"
 
 aggregate-error@^3.0.0:
   version "3.1.0"
@@ -4743,9 +4739,9 @@ typedarray-to-buffer@^3.1.5:
   dependencies:
     is-typedarray "^1.0.0"
 
-typescript@^4.3.2:
-  version "4.3.4"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.3.4.tgz#3f85b986945bcf31071decdd96cf8bfa65f9dcbc"
+typescript@^4.3.5:
+  version "4.3.5"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.3.5.tgz#4d1c37cc16e893973c45a06886b7113234f119f4"
 
 unbzip2-stream@^1.0.9:
   version "1.4.3"
@@ -4951,16 +4947,16 @@ webpack-sources@^2.3.0:
     source-list-map "^2.0.1"
     source-map "^0.6.1"
 
-webpack@^5.40.0:
-  version "5.40.0"
-  resolved "https://registry.yarnpkg.com/webpack/-/webpack-5.40.0.tgz#3182cfd324759d715252cf541901a226e57b5061"
+webpack@^5.42.0:
+  version "5.42.0"
+  resolved "https://registry.yarnpkg.com/webpack/-/webpack-5.42.0.tgz#39aadbce84ad2cebf86cc5f88a2c53db65cbddfb"
   dependencies:
     "@types/eslint-scope" "^3.7.0"
-    "@types/estree" "^0.0.47"
+    "@types/estree" "^0.0.48"
     "@webassemblyjs/ast" "1.11.0"
     "@webassemblyjs/wasm-edit" "1.11.0"
     "@webassemblyjs/wasm-parser" "1.11.0"
-    acorn "^8.2.1"
+    acorn "^8.4.1"
     browserslist "^4.14.5"
     chrome-trace-event "^1.0.2"
     enhanced-resolve "^5.8.0"
