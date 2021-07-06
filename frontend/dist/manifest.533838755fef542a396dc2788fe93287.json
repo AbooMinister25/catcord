@@ -1,9 +1,0 @@
-{
-  "name": "frontend",
-  "short_name": "frontend",
-  "orientation": "portrait",
-  "display": "standalone",
-  "start_url": "/",
-  "description": "A website frontend",
-  "background_color": "#ffffff"
-}
