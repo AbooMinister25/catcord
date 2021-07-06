@@ -1,17 +1,24 @@
 import backend.db.tasks as tasks
 import backend.db.crud as crud
 import backend.core.actions as actions
+from backend.core.logger import Logger
 from backend.schemas import NewServerBody
-from fastapi import APIRouter, Header, Response
+from fastapi import APIRouter, Header, Response, Request
 import hashlib
 
 router = APIRouter()
 
+logger = Logger(mode="file", filename="requests.log")
+
 
 @router.post("/new_server")
 async def new_server(
-        response: Response, serverinfo: NewServerBody, Auth: str = Header(None)
+    response: Response,
+    request: Request,
+    serverinfo: NewServerBody,
+    Auth: str = Header(None),
 ):
+    await logger.info(f"POST request to endpoint /new_server from client {request.client.host}")
     if Auth is None:
         response.status_code = 403
         return {"error": "No token supplied. Please submit a token."}

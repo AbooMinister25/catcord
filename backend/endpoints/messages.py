@@ -3,15 +3,24 @@ import backend.db.crud as crud
 import backend.core.actions as actions
 from backend.schemas import NewMessageBody
 import time
-from fastapi import APIRouter, Header, Response
+from fastapi import APIRouter, Header, Response, Request
+from backend.core.logger import Logger
+
+logger = Logger(mode="file", filename="requests.log")
 
 router = APIRouter()
 
 
 @router.post("/new_message")
 async def new_message(
-        response: Response, messageinfo: NewMessageBody, Auth: str = Header(None)
+    response: Response,
+    request: Request,
+    messageinfo: NewMessageBody,
+    Auth: str = Header(None),
 ):
+    await logger.info(
+        f"POST request to endpoint /new_message from client {request.client.host}"
+    )
     if Auth is None:
         response.status_code = 403
         return {"error": "No token supplied. Please submit a token."}
@@ -44,8 +53,14 @@ async def new_message(
 
 @router.get("/get_messages")
 async def get_messages(
-        response: Response, server_id: str = None, Auth: str = Header(None)
+    response: Response,
+    request: Request,
+    server_id: str = None,
+    Auth: str = Header(None),
 ):
+    await logger.info(
+        f"GET request to endpoint /get_messages from client {request.client.host}"
+    )
     if Auth is None:
         return {"error": "No token supplied. Please submit a token."}
 

@@ -1,7 +1,9 @@
 import typing
 import asyncpg
-from loguru import logger
 from backend.core.config import DATABASE_URL
+from backend.core.logger import Logger
+
+logger = Logger(mode="file", filename="database.log")
 
 
 class Database:
@@ -9,22 +11,24 @@ class Database:
         self.url = database_url
 
     async def __aenter__(self) -> typing.Optional[asyncpg.Connection]:
-        logger.info("Attempting to connect to database")
+        await logger.info("Attempting to connect to database")
 
         try:
             self.conn = await asyncpg.connect(self.url)
-            logger.success("Successfully connected to database")
+            await logger.success("Successfully connected to database")
             return self.conn
-        except Exception as e:
-            logger.error("Exception occured while attempting to connect to database")
-            logger.error(e)
+        except:
+            await logger.error(
+                "Exception occured while attempting to connect to database", exc=True
+            )
 
     async def __aexit__(self, exc_type, exc, tb):
         if isinstance(exc, Exception):
-            logger.error(
-                f"The following exception occured while interacting with database: {exc_type}"
+            await logger.error(
+                f"The following exception occured while interacting with database: {exc_type}",
+                exc=True,
             )
-            logger.error(exc)
+            await logger.error(str(exc))
         if self.conn:
-            logger.info("Closing database connection")
+            await logger.info("Closing database connection")
             await self.conn.close()

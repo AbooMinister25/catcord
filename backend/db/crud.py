@@ -1,5 +1,7 @@
 import asyncpg
-from loguru import logger
+from backend.core.logger import Logger
+
+logger = Logger(mode="file", filename="database.log")
 
 
 async def new_user(
@@ -9,29 +11,31 @@ async def new_user(
     username: str,
     passhash: str,
 ):
-    logger.info("Attempting to add a new user to DB")
+    await logger.info("Attempting to add a new user to DB")
     try:
         await connection.execute(
             f"INSERT INTO USERS VALUES({user_id}, '{tokenhash}', '{username}', '{passhash}');"
         )
-        logger.info("Successfully added a new user to DB")
-    except Exception as e:
-        logger.error("Exception occured while trying to add a user to database")
-        logger.error(e)
+        await logger.success("Successfully added a new user to DB")
+    except:
+        await logger.error(
+            "Exception occured while trying to add a user to database", exc=True
+        )
 
 
 async def new_server(
     connection: asyncpg.Connection, server_id: str, owner_id: str, server_name: str
 ):
-    logger.info("Attempting to add a server to DB")
+    await logger.info("Attempting to add a server to DB")
     try:
         await connection.execute(
             f"INSERT INTO SERVERS VALUES('{server_id}', '{owner_id}', '{server_name}');"
         )
-        logger.info("Successfully added a server to DB")
-    except Exception as e:
-        logger.error("Exception occured while trying to add a server to database")
-        logger.error(e)
+        await logger.success("Successfully added a server to DB")
+    except:
+        await logger.error(
+            "Exception occured while trying to add a server to database", exc=True
+        )
 
 
 async def new_message(
@@ -42,26 +46,28 @@ async def new_message(
     server_id: str,
     message_content: str,
 ):
-    logger.info("Attempting to add a new message to DB")
+    await logger.info("Attempting to add a new message to DB")
     try:
         await connection.execute(
             f"INSERT INTO MESSAGES VALUES('{message_id}', \
             '{timesent}', '{sender_id}', '{server_id}', '{message_content}');"
         )
-        logger.info("Successfully added a new message to DB")
-    except Exception as e:
-        logger.error("Exception occured while trying to add a message to database")
-        logger.error(e)
+        await logger.success("Successfully added a new message to DB")
+    except:
+        await logger.error(
+            "Exception occured while trying to add a message to database", exc=True
+        )
 
 
 async def get_messages(connection: asyncpg.Connection, server_id: str):
-    logger.info("Attempting to get messages from DB")
+    await logger.info("Attempting to get messages from DB")
     try:
         messages = await connection.fetch(
             f"SELECT * FROM MESSAGES WHERE server_id='{server_id}'"
         )
-        logger.info("Successfully retrieved messages from DB")
+        await logger.success("Successfully retrieved messages from DB")
         return messages
-    except Exception as e:
-        logger.error("Exception occured while fetching messages from DB")
-        logger.error(e)
+    except:
+        await logger.error(
+            "Exception occured while fetching messages from DB", exc=True
+        )
