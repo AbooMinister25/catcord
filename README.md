@@ -12,4 +12,4 @@ Welcome to _Catcord_. Catcord is a minimal chat application created by the Cat D
 
 ### Contributing
 
-If you want to contribute to Catcord, please see [CONTRIBUTING.md](<[CONTRIBUTING.md](https://github.com/cat-dev-group/catcord/blob/main/CONTRIBUTING.md)>)
+If you want to contribute to Catcord, please see [CONTRIBUTING.md](https://github.com/cat-dev-group/catcord/blob/main/CONTRIBUTING.md)
