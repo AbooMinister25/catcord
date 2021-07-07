@@ -12,5 +12,7 @@ app.include_router(token.router)
 
 @app.get("/")
 async def home(request: Request):
-    await logger.info(f"GET request to endpoint / from client {request.client.host}")
+    await logger.log(
+        "info", f"GET request to endpoint / from client {request.client.host}"
+    )
     return {"message": "Send a POST request to /token to generate a token."}

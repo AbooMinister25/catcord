@@ -1,7 +1,7 @@
 from starlette.config import Config
 from starlette.datastructures import Secret
 
-config = Config("catcord/.env")
+config = Config("backend/.env")
 
 PROJECT_NAME = "catcord"
 VERSION = "1.0.0"
@@ -15,5 +15,10 @@ POSTGRES_DB = config("POSTGRES_DB", cast=str)
 DATABASE_URL = config(
     "DATABASE_URL",
     cast=str,
-    default=f"postgresql://{POSTGRES_USER}:{POSTGRES_PASSWORD}@{POSTGRES_SERVER}:{POSTGRES_PORT}/{POSTGRES_DB}",
+    default=f"postgresql://"
+    f"{POSTGRES_USER}:"
+    f"{POSTGRES_PASSWORD}@"
+    f"{POSTGRES_SERVER}:"
+    f"{POSTGRES_PORT}/"
+    f"{POSTGRES_DB}",
 )

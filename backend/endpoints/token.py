@@ -13,8 +13,8 @@ logger = Logger(mode="file", filename="requests.log")
 
 @router.post("/token")
 async def token(request: Request, userinfo: UserCreateBody):
-    await logger.info(
-        f"POST request to endpoint /token from client {request.client.host}"
+    await logger.log(
+        "info", f"POST request to endpoint /token from client {request.client.host}"
     )
     token = str(uuid4())
     tokenhash = str(hashlib.sha256(bytes(token, encoding="utf8")).hexdigest())

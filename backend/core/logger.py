@@ -23,7 +23,8 @@ class Logger:
 
     :param mode: String declaring the mode of logging used.
     Can be hybrid for output to stdout and file, file for output to file, or stdout to stdout.
-    :param filename: Optional string declaring the filename of the log file, if logging type is hybrid or file.
+    :param filename: Optional string declaring the filename of the log file,
+    if logging type is hybrid or file.
     Do note that logs will be in the same directory as the file that calls the logging class.
     :param COLORS: Optional dictionary containing a set of ANSI escape codes to use as COLORS.
     Requires the following keys: end, error, info, warning and timestamp.
@@ -62,7 +63,8 @@ class Logger:
 
     async def _log(self, logtype: str = "INFO", body: Optional[str] = None):
         """
-        :param type: String declaring the logging type. Reccomended values are info, warning, and error.
+        :param type: String declaring the logging type.
+        Reccomended values are info, warning, and error.
         :param content: String containing the log content.
         """
         colored_log = (
@@ -94,7 +96,11 @@ class Logger:
         await self._log(
             logtype="{1}{0}{2}".format(
                 log_mode.upper(),
-                *((COLORS.get(log_mode), COLORS.get('end')) if self.colored else ("", "")),
+                *(
+                    (COLORS.get(log_mode), COLORS.get("end"))
+                    if self.colored
+                    else ("", "")
+                ),
             ),
             body=f"{content}",
         )

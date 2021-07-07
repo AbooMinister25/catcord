@@ -18,7 +18,10 @@ async def new_server(
     serverinfo: NewServerBody,
     Auth: str = Header(None),
 ):
-    await logger.info(f"POST request to endpoint /new_server from client {request.client.host}")
+    await logger.log(
+        "info",
+        f"POST request to endpoint /new_server from client {request.client.host}",
+    )
     if Auth is None:
         response.status_code = 403
         return {"error": "No token supplied. Please submit a token."}

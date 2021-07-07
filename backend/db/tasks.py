@@ -11,24 +11,24 @@ class Database:
         self.url = database_url
 
     async def __aenter__(self) -> typing.Optional[asyncpg.Connection]:
-        await logger.info("Attempting to connect to database")
+        await logger.log("info", "Attempting to connect to database")
 
         try:
             self.conn = await asyncpg.connect(self.url)
-            await logger.success("Successfully connected to database")
+            await logger.log("success", "Successfully connected to database")
             return self.conn
         except:
-            await logger.error(
+            await logger.error_log(
                 "Exception occured while attempting to connect to database", exc=True
             )
 
     async def __aexit__(self, exc_type, exc, tb):
         if isinstance(exc, Exception):
-            await logger.error(
+            await logger.error_log(
                 f"The following exception occured while interacting with database: {exc_type}",
                 exc=True,
             )
-            await logger.error(str(exc))
+            await logger.error_log(str(exc))
         if self.conn:
-            await logger.info("Closing database connection")
+            await logger.log("info", "Closing database connection")
             await self.conn.close()

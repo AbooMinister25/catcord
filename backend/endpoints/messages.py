@@ -18,8 +18,9 @@ async def new_message(
     messageinfo: NewMessageBody,
     Auth: str = Header(None),
 ):
-    await logger.info(
-        f"POST request to endpoint /new_message from client {request.client.host}"
+    await logger.log(
+        "info",
+        f"POST request to endpoint /new_message from client {request.client.host}",
     )
     if Auth is None:
         response.status_code = 403
@@ -58,8 +59,9 @@ async def get_messages(
     server_id: str = None,
     Auth: str = Header(None),
 ):
-    await logger.info(
-        f"GET request to endpoint /get_messages from client {request.client.host}"
+    await logger.log(
+        "info",
+        f"GET request to endpoint /get_messages from client {request.client.host}",
     )
     if Auth is None:
         return {"error": "No token supplied. Please submit a token."}
