@@ -1,6 +1,12 @@
 name: Lint & Test - Backend
 
-on: [push, pull_request]
+on:
+  push:
+    paths:
+      - backend/**
+  pull_request:
+    paths:
+      - backend/**
 
 jobs:
     lintbackend:
@@ -20,4 +26,4 @@ jobs:
                   poetry install
             - name: Lint with flake8
               run: |
-                  poetry run flake8 --max-line-length 100 --ignore E203,E712,W503,F841,E722 backend/
+                  poetry run flake8 --max-line-length 120 --ignore E203,E712,W503,F841,E722 backend/

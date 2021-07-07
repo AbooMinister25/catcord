@@ -1,13 +1,21 @@
 # dependencies
-/node_modules
-/.yarn
-/.pnp.js
+/node_modules/
+.yarn/*
+!.yarn/patches
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+.pnp.*
 
 # testing
 /coverage
 
+# cloudflare
+/workers-site/
+
 # production
-/dist
+/dist/
 
 # misc
 .DS_Store

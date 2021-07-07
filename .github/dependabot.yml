@@ -1,18 +1,18 @@
 version: 2
 updates:
-  # - package-ecosystem: "npm"
-  #   directory: "/frontend"
-  #   schedule:
-  #     interval: "daily"
-  #   labels:
-  #     - "Area: Dependencies"
-  #     - "Area: Frontend"
-  #   reviewers: ["dawnofmidnight"]
-  #   assignees: ["dawnofmidnight"]
+  - package-ecosystem: "npm"
+    directory: "/frontend"
+    schedule:
+      interval: "weekly"
+    labels:
+      - "Area: Dependencies"
+      - "Area: Frontend"
+    reviewers: ["dawnofmidnight"]
+    assignees: ["dawnofmidnight"]
   - package-ecosystem: "pip"
     directory: "/"
     schedule:
-      interval: "daily"
+      interval: "weekly"
     labels:
       - "Area: Dependencies"
       - "Area: Backend"

@@ -1,5 +1,0 @@
-restylers:
-  - prettier
-  - black
-  - prettier-yaml
-  - whitespace

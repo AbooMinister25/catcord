@@ -1,122 +1,80 @@
-/* eslint-disable camelcase */
-const path = require('path')
-const CopyPlugin = require('copy-webpack-plugin')
-const WebpackPwaManifest = require('webpack-pwa-manifest')
+/* eslint-disable */
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 
-const {
-  meta, 
-  port,
-} = require('./config')
+const config = require('./config.js')
 
 const plugins = [
-  new CopyPlugin({
+  new HtmlWebpackPlugin({
+    template: "src/index.html"
+  }),
+  new CopyWebpackPlugin({
     patterns: [
       {
-        from: 'public',
-        to: '', 
-      },
-    ],
-
-    options: {
-      concurrency: 100,
-    },
-  }),
-]
-
-if (process.env.NODE_ENV === 'production') {
-  plugins.push(    
-    new WebpackPwaManifest({
-      name: meta.title,
-      short_name: meta.title,
-      start_url: '/',
-      description: meta.description,
-      background_color: meta.themeColor,
-      crossorigin: 'use-credentials',
-      // icons: [
-      //   {
-      //     src: path.resolve('src/assets/logo.png'),
-      //     sizes: [96, 128, 192, 256, 384, 512], // multiple sizes
-      //   },
-      //   {
-      //     src: path.resolve('src/assets/large-icon.png'),
-      //     size: '1024x1024', // you can also use the specifications pattern
-      //   },
-      //   {
-      //     src: path.resolve('src/assets/maskable-icon.png'),
-      //     size: '1024x1024',
-      //     purpose: 'maskable',
-      //   },
-      // ],
-    }),
-  )
-}
-
-const sassLoader = [
-  'css-loader',
-  {
-    loader: 'sass-loader',
-    options: {
-      sassOptions: {
-        indentedSyntax: true,
-        includePaths: [path.resolve(__dirname, 'src', 'sass')],
-      },
-    },
-  },
-]
+        from: "public",
+        to: "",
+      }
+    ]
+  })
+];
 
 module.exports = () => ({
   plugins,
-
   module: {
     rules: [
       {
-        test: /\.tsx?$/,
-        use: 'ts-loader',
+        test: /\.(js|jsx|tsx|ts)$/,
         exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+        }
       },
       {
-        test: /\.sass$/,
-        use: sassLoader,
-      },
-      {
-        test: /\.(mp4|webm|webp|png|jpg|gif|woff|woff2|eot|ttf|otf)$/,
+        test: /\.css$/i,
         use: [
+          "style-loader", 
           {
-            loader: 'file-loader',
+            loader: "css-loader",
             options: {
-              esModule: false,
+              modules: true,
             },
           },
         ],
       },
+      {
+        test: /\.scss$/i,
+        use: [
+          'style-loader',
+          'css-loader',
+          'sass-loader'
+        ],
+      }
     ],
   },
-
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, 'src'),
-      'config': path.resolve(__dirname, 'config.js'),
-      'css': path.resolve(__dirname, 'src/css'),
-      'sass': path.resolve(__dirname, 'src/sass'),
-      'assets': path.resolve(__dirname, 'src/assets'),
+      "css": path.join(__dirname, "src/css"),
+      "sass": path.join(__dirname, "src/sass"),
+      "scss": path.join(__dirname, "src/scss"),
+      "views": path.join(__dirname, "src/pages"),
+      "~mixins": path.join(__dirname, "src", "scss", "mixins")
     },
-    extensions: ['.tsx', '.ts', '.js', '.jsx'],
+    extensions: ["*", ".js", ".jsx", ".tsx", ".ts"]
   },
-
   entry: {
-    index: './src/pages/index.tsx',
+    app: path.resolve(process.cwd(), "src", "index.tsx")
   },
-
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: "bundle.js",
+    filename: '[name].js',
+    path: path.resolve(process.cwd(), 'dist'),
+    publicPath: "/"
   },
-
-  devtool: 'source-map',
-
+  mode: process.env.NODE_ENV,
+  // devtool: process.env.NODE_ENV === 'production' ? 'none' : 'source-map',
   devServer: {
-    port: port,
+    port: config.port,
     host: '0.0.0.0',
-    historyApiFallback: true,
-  },
-})
+    historyApiFallback: true
+  }
+});
