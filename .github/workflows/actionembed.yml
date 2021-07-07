@@ -2,7 +2,7 @@ name: Status Embed
 
 on:
   workflow_run:
-      workflows: ["Lint"]
+      workflows: ["Lint & Test - Backend", "CodeQL", "Pytest Testing"]
       types: ["completed"]
 
 jobs:
