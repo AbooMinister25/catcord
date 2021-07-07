@@ -19,7 +19,6 @@ jobs:
         with:
           apiToken: ${{ secrets.CF_API_TOKEN }}
           workingDirectory: frontend
-          preCommands:
-            cd frontend
+          preCommands: |
             yarn
             yarn build
