@@ -1,0 +1,38 @@
+name: Status Embed
+
+on:
+  workflow_run:
+      workflows: ["Lint"]
+      types: ["completed"]
+
+jobs:
+  send_embed:
+    runs-on: ubuntu-latest
+    name: Send an embed to Discord
+
+    steps:
+    - name: Run the GitHub Actions Status Embed Action
+      uses: SebastiaanZ/github-status-embed-for-discord@v0.3.0
+      with:
+        # Discord webhook
+        webhook_id: '834439045899616257'  # Has to be provided as a string
+        webhook_token: ${{ secrets.WEBHOOK_TOKEN }}
+        
+        workflow_name: ${{ github.event.workflow_run.name }}
+        run_id: ${{ github.event.workflow_run.id }}
+        run_number: ${{ github.event.workflow_run.run_number }}
+        status: ${{ github.event.workflow_run.conclusion }}
+        actor: ${{ github.actor }}
+        repository:  ${{ github.repository }}
+        ref: ${{ github.ref }}
+        sha: ${{ github.event.workflow_run.head_sha }}
+
+        # Optional arguments for PR-related events
+        # Note: There's no harm in including these lines for non-PR
+        # events, as non-existing paths in objects will evaluate to
+        # `null` silently and the github status embed action will
+        # treat them as absent.
+        pr_author_login: ${{ github.event.pull_request.user.login }}
+        pr_number: ${{ github.event.pull_request.number }}
+        pr_title: ${{ github.event.pull_request.title }}
+        pr_source: ${{ github.event.pull_request.head.label }}
