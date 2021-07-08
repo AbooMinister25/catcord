@@ -1,13 +1,17 @@
 name: Lint & Test - Frontend
 
 on:
-  on:
   push:
     paths:
       - frontend/**
   pull_request:
     paths:
       - frontend/**
+
+defaults:
+  run:
+    working-directory: frontend
+
 jobs:
   lint:
     name: ESLint
