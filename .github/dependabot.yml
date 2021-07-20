@@ -3,19 +3,16 @@ updates:
   - package-ecosystem: "npm"
     directory: "/frontend"
     schedule:
-      interval: "weekly"
+      interval: "monthly"
     labels:
       - "Area: Dependencies"
       - "Area: Frontend"
     reviewers: ["dawnofmidnight"]
-    assignees: ["dawnofmidnight"]
   - package-ecosystem: "pip"
     directory: "/"
     schedule:
-      interval: "weekly"
+      interval: "monthly"
     labels:
       - "Area: Dependencies"
       - "Area: Backend"
     reviewers: ["kronifer"]
-    assignees: ["kronifer"]
- 
