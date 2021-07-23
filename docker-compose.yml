@@ -1,8 +1,6 @@
-version: "3.9"
-
 services:
-  db:
-    image: postgres
+  postgres:
+    image: postgres:13-alpine
     volumes:
       - postgres_data:/var/lib/postgresql/data/
       - ./backend/init.sql:/docker-entrypoint-initdb.d/init.sql
@@ -11,14 +9,16 @@ services:
     env_file:
       - ./backend/.env
     environment:
-      - POSTGRES_DB=postgres
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-  web:
-    build: .
-    command: gunicorn backend.main:app -w 4 -k uvicorn.workers.UvicornWorker --bind 0.0.0.0
+      - POSTGRES_DB=catcord
+      - POSTGRES_USER=catcord
+      - POSTGRES_PASSWORD=catcord  
+  
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
     volumes:
-      - .:/backend
+      - ./:/app
     env_file:
       - ./backend/.env
     ports:

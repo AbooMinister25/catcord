@@ -1,7 +1,7 @@
 from starlette.config import Config
 from starlette.datastructures import Secret
 
-config = Config("backend/.env")
+config = Config(".env")
 
 PROJECT_NAME = "catcord"
 VERSION = "1.0.0"

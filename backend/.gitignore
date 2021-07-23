@@ -1,0 +1,5 @@
+__pycache__/
+catcord_logs/
+.pytest_cache/
+.venv/
+*.log

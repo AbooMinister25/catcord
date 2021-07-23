@@ -1,13 +1,13 @@
 FROM python:3.9-slim-buster
 
+# Create working directory
+WORKDIR /app
+
 ENV PIP_NO_CACHE_DIR=false \
     POETRY_VIRTUALENVS_CREATE=false
 
 # Install Poetry
 RUN pip install -U poetry
-
-# Create working directory
-WORKDIR /backend
 
 # Copy files 
 COPY pyproject.toml poetry.lock ./
@@ -15,8 +15,6 @@ COPY pyproject.toml poetry.lock ./
 # Install with poetry
 RUN poetry install
 
-
 COPY . .
 
-RUN poetry install
-
+CMD ["poetry", "run", "task", "start"]

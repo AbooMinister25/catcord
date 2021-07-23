@@ -1,5 +1,2 @@
-__pycache__/
-.venv/
+.vscode/
 .idea/
-.catcord_logs/
-*.log

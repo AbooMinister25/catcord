@@ -1,5 +1,5 @@
 import asyncpg
-from backend.core.logger import Logger
+from src.core.logger import Logger
 
 logger = Logger(mode="file", filename="database.log")
 
@@ -18,7 +18,7 @@ async def new_user(
         )
 
         await logger.log("success", "Successfully added a new user to DB")
-    except:
+    except Exception:
         await logger.error_log(
             "Exception occured while trying to add a user to database",
             exc=True,
@@ -34,7 +34,7 @@ async def new_server(
             f"INSERT INTO SERVERS VALUES('{server_id}', '{owner_id}', '{server_name}');"
         )
         await logger.log("success", "Successfully added a server to DB")
-    except:
+    except Exception:
         await logger.error_log(
             "Exception occured while trying to add a server to database", exc=True
         )
@@ -55,7 +55,7 @@ async def new_message(
             '{timesent}', '{sender_id}', '{server_id}', '{message_content}');"
         )
         await logger.log("success", "Successfully added a new message to DB")
-    except:
+    except Exception:
         await logger.error_log(
             "Exception occured while trying to add a message to database", exc=True
         )
@@ -69,7 +69,7 @@ async def get_messages(connection: asyncpg.Connection, server_id: str):
         )
         await logger.log("success", "Successfully retrieved messages from DB")
         return messages
-    except:
+    except Exception:
         await logger.error_log(
             "Exception occured while fetching messages from DB", exc=True
         )

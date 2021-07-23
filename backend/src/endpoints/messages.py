@@ -1,10 +1,10 @@
-import backend.db.tasks as tasks
-import backend.db.crud as crud
-import backend.core.actions as actions
-from backend.schemas import NewMessageBody
+import src.db.tasks as tasks
+import src.db.crud as crud
+import src.core.actions as actions
 import time
+from src.schemas import NewMessageBody
 from fastapi import APIRouter, Header, Response, Request
-from backend.core.logger import Logger
+from src.core.logger import Logger
 
 logger = Logger(mode="file", filename="requests.log")
 

@@ -1,7 +1,7 @@
 import typing
 import asyncpg
-from backend.core.config import DATABASE_URL
-from backend.core.logger import Logger
+from src.core.config import DATABASE_URL
+from src.core.logger import Logger
 
 logger = Logger(mode="file", filename="database.log")
 
@@ -17,7 +17,7 @@ class Database:
             self.conn = await asyncpg.connect(self.url)
             await logger.log("success", "Successfully connected to database")
             return self.conn
-        except:
+        except Exception:
             await logger.error_log(
                 "Exception occured while attempting to connect to database", exc=True
             )

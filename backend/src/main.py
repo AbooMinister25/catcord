@@ -1,6 +1,6 @@
 from fastapi import FastAPI, Request
-from backend.endpoints import servers, messages, token
-from backend.core.logger import Logger
+from src.endpoints import servers, messages, token
+from src.core.logger import Logger
 
 app = FastAPI()
 logger = Logger(mode="file", filename="requests.log")

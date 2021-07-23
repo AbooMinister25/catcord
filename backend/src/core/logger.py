@@ -46,7 +46,7 @@ class Logger:
             directory = f"catcord_logs/{filename}"
 
             if not os.path.exists(directory):
-                with open(f"{directory}", "w") as f:
+                with open(f"{directory}", "w"):
                     pass
 
         self.filename = f"catcord_logs/{filename}"

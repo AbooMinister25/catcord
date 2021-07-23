@@ -1,8 +1,8 @@
-import backend.db.tasks as tasks
-import backend.db.crud as crud
-import backend.core.actions as actions
-from backend.core.logger import Logger
-from backend.schemas import NewServerBody
+import src.db.tasks as tasks
+import src.db.crud as crud
+import src.core.actions as actions
+from src.core.logger import Logger
+from src.schemas import NewServerBody
 from fastapi import APIRouter, Header, Response, Request
 import hashlib
 
