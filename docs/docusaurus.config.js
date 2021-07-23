@@ -98,7 +98,7 @@ module.exports = {
         docs: {
           sidebarPath: require.resolve("./sidebars.js"),
           routeBasePath: "/",
-          editUrl: "https://github.com/cat-dev-group/docs/tree/main/docs/",
+          editUrl: "https://github.com/cat-dev-group/catcord/blob/main/docs/",
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
