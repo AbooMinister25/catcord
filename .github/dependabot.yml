@@ -1,14 +1,5 @@
 version: 2
 updates:
-  - package-ecosystem: "npm"
-    directory: "/frontend"
-    schedule:
-      interval: "monthly"
-    labels:
-      - "Area: Dependencies"
-      - "Area: Frontend"
-    reviewers: ["dawnofmidnight"]
-
   - package-ecosystem: "pip"
     directory: "/"
     schedule:
