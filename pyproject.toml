@@ -7,7 +7,7 @@ authors = ["Cat Developer Group"]
 [tool.poetry.dependencies]
 python = "^3.8"
 fastapi = "^0.66.0"
-black = "^21.6b0"
+black = "^21.7b0"
 uvicorn = "^0.14.0"
 flake8 = "^3.9.2"
 asyncpg = "^0.23.0"
