@@ -9,11 +9,11 @@ on:
       - backend/**
 
 jobs:
-    lintbackend:
+    lint:
         runs-on: ubuntu-latest
         strategy:
             matrix:
-                python-version: [3.8, 3.9]
+                python-version: [3.9]
         steps:
             - uses: actions/checkout@v2
             - name: Set up Python ${{ matrix.python-version }}
@@ -27,3 +27,23 @@ jobs:
             - name: Lint with flake8
               run: |
                   poetry run flake8 --max-line-length 120 --ignore E203,E712,W503,F841,E722 backend/
+
+    test:
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                python-version: [3.9]
+
+        steps:
+            - uses: actions/checkout@v2
+            - name: Set up Python ${{ matrix.python-version }}
+              uses: actions/setup-python@v2
+              with:
+                  python-version: ${{ matrix.python-version }}
+            - name: Install Dependencies
+              run: |
+                  python3 -m pip install poetry
+                  poetry install
+            - name: Unit test with pytest
+              run: |
+                  poetry run pytest

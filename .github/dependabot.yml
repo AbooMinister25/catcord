@@ -8,6 +8,7 @@ updates:
       - "Area: Dependencies"
       - "Area: Frontend"
     reviewers: ["dawnofmidnight"]
+
   - package-ecosystem: "pip"
     directory: "/"
     schedule:
@@ -16,3 +17,8 @@ updates:
       - "Area: Dependencies"
       - "Area: Backend"
     reviewers: ["kronifer"]
+    
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "monthly"
