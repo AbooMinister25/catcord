@@ -17,4 +17,6 @@ RUN poetry install
 
 COPY . .
 
+EXPOSE 3000
+
 CMD ["poetry", "run", "task", "start"]
