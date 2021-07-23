@@ -29,7 +29,7 @@
     "@babel/preset-react": "^7.14.5",
     "@babel/preset-typescript": "^7.14.5",
     "@tauri-apps/cli": "^1.0.0-beta-rc.4",
-    "@types/node": "^16.3.3",
+    "@types/node": "^16.4.1",
     "@types/react": "^17.0.14",
     "@types/react-dom": "^17.0.9",
     "@types/react-router-dom": "^5.1.8",
