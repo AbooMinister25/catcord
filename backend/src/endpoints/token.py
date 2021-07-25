@@ -1,21 +1,20 @@
-import src.db.tasks as tasks
-import src.db.crud as crud
-import src.core.actions as actions
-from src.core.logger import Logger
-from src.schemas import UserCreateBody
-from fastapi import APIRouter, Request
-from uuid import uuid4
 import hashlib
+from uuid import uuid4
+
+from fastapi import APIRouter, Request
+from loguru import logger
+
+import src.core.actions as actions
+import src.db.crud as crud
+import src.db.tasks as tasks
+from src.schemas import UserCreateBody
 
 router = APIRouter()
-logger = Logger(mode="file", filename="requests.log")
 
 
 @router.post("/token")
 async def token(request: Request, userinfo: UserCreateBody):
-    await logger.log(
-        "info", f"POST request to endpoint /token from client {request.client.host}"
-    )
+    logger.info("POST request to endpoint /token from client {request.client.host}")
     token = str(uuid4())
     tokenhash = str(hashlib.sha256(bytes(token, encoding="utf8")).hexdigest())
     password = userinfo.password

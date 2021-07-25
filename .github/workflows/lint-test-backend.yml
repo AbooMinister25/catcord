@@ -75,3 +75,24 @@ jobs:
       
       - name: Run Tests
         run: poetry run task test
+  
+  isort:
+    runs-on: ubuntu-latest
+    name: isort
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Setup Python Environment
+        uses: actions/setup-python@v2.2.2
+        with:
+          python-version: "3.9"
+
+      - name: Setup Poetry
+        run: python -m pip install -U poetry
+
+      - name: Install Dependencies
+        run: poetry install
+      
+      - name: Check with isort
+        run: poetry run isort . --check --diff

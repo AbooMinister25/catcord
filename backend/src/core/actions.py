@@ -1,5 +1,5 @@
-import time
 import hashlib
+import time
 
 token_count = 0
 

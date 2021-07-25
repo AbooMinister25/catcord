@@ -13,7 +13,7 @@ RUN pip install -U poetry
 COPY pyproject.toml poetry.lock ./
 
 # Install with poetry
-RUN poetry install
+RUN poetry install --no-dev
 
 COPY . .
 

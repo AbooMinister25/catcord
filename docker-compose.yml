@@ -18,7 +18,7 @@ services:
       context: ./backend
       dockerfile: Dockerfile
     volumes:
-      - ./:/app
+      - ./:/backend/app
     env_file:
       - ./backend/.env
     ports:

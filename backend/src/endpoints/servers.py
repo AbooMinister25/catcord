@@ -1,14 +1,14 @@
-import src.db.tasks as tasks
-import src.db.crud as crud
-import src.core.actions as actions
-from src.core.logger import Logger
-from src.schemas import NewServerBody
-from fastapi import APIRouter, Header, Response, Request
 import hashlib
 
-router = APIRouter()
+from fastapi import APIRouter, Header, Request, Response
+from loguru import logger
 
-logger = Logger(mode="file", filename="requests.log")
+import src.core.actions as actions
+import src.db.crud as crud
+import src.db.tasks as tasks
+from src.schemas import NewServerBody
+
+router = APIRouter()
 
 
 @router.post("/new_server")
@@ -18,9 +18,8 @@ async def new_server(
     serverinfo: NewServerBody,
     Auth: str = Header(None),
 ):
-    await logger.log(
-        "info",
-        f"POST request to endpoint /new_server from client {request.client.host}",
+    logger.info(
+        f"POST request to endpoint /new_server from client {request.client.host}"
     )
     if Auth is None:
         response.status_code = 403
