@@ -17,6 +17,6 @@ RUN poetry install --no-dev
 
 COPY . .
 
-EXPOSE 3000
+EXPOSE 8000
 
 CMD ["poetry", "run", "task", "start"]
