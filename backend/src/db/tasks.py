@@ -9,6 +9,7 @@ from src.core.config import DATABASE_URL
 class Database:
     def __init__(self, database_url: str = DATABASE_URL):
         self.url = database_url
+        self.conn = None
 
     async def __aenter__(self) -> typing.Optional[asyncpg.Connection]:
         logger.info("Attempting to connect to database")
