@@ -46,7 +46,7 @@ module.exports = {
           label: "Docs",
         },
         {
-          href: "https://github.com/supabase/supabase",
+          href: "https://github.com/cat-dev-group/catcord",
           className: "navbar-item-github",
           position: "right",
         },
