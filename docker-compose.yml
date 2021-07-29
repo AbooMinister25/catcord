@@ -8,11 +8,8 @@ services:
       - 5432:5432
     env_file:
       - ./backend/.env
-    environment:
-      - POSTGRES_DB=catcord
-      - POSTGRES_USER=catcord
-      - POSTGRES_PASSWORD=catcord  
-  
+
+
   backend:
     build:
       context: ./backend
@@ -23,6 +20,9 @@ services:
       - ./backend/.env
     ports:
       - "8000:8000"
+    depends_on:
+      - postgres
+
 
 volumes:
   postgres_data:

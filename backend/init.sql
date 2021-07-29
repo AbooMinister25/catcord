@@ -2,8 +2,8 @@ CREATE TABLE users (
     user_id TEXT PRIMARY KEY,
     token TEXT NOT NULL,
     username TEXT NOT NULL,
-    password TEXT NOT NULL
-
+    password TEXT NOT NULL,
+    email TEXT NOT NULL
 );
 
 CREATE TABLE servers (
@@ -20,5 +20,5 @@ CREATE TABLE messages (
     server_id TEXT NOT NULL,
     message_content VARCHAR(1000) NOT NULL,
     FOREIGN KEY(sender_id) REFERENCES USERS(user_id),
-    FOREIGN KEY(sender_id) REFERENCES SERVERS(server_id)
+    FOREIGN KEY(server_id) REFERENCES SERVERS(server_id)
 )
