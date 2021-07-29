@@ -1,0 +1,10 @@
+# Ignore Everything
+*
+
+# Include necessary files
+!src/
+!public/
+!package.json
+!yarn.lock
+!tsconfig.json
+!svelte.config.js

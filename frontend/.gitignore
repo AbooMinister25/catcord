@@ -8,11 +8,8 @@
 !.yarn/versions
 .pnp.*
 
-# testing
-/coverage
-
-# cloudflare
-/workers-site/
+# Svelte
+/.svelte-kit
 
 # production
 /dist/

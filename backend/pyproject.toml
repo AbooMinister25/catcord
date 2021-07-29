@@ -32,3 +32,4 @@ start = "poetry run gunicorn src.main:app -w 4 -k uvicorn.workers.UvicornWorker 
 lint = "poetry run flake8"
 format = "poetry run black . && poetry run isort ."
 test = "poetry run pytest"
+docker = "docker build . -t catcord-backend && docker run -t -p 8000:8000 catcord-backend"

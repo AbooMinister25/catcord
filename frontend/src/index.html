@@ -1,32 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <base href="/">
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta name="color-scheme" content="dark light">
 
-    <meta property="og:type" content="object">
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#91fff3" />
 
-    <meta property="og:url" content="https://nobuwu.github.io/sliceyjs">
-    <meta name="theme-color" content="#ff69b4">
-    <!-- <link rel="icon" type="image/png" href="logo.png"> -->
-
-    <meta property="og:description" name="description" content="Catcord">
-    <meta property="twitter:description" content="Catcord">
-
-    <!-- <meta name="twitter:image:src" content="https://nobuwu.github.io/sliceyjs/banner.png"> -->
-    <meta name="twitter:card" content="summary_large_image">
-    <!-- <meta property="og:image" content="https://nobuwu.github.io/sliceyjs/banner.png"> -->
-
-    <meta name="twitter:site" content="Catcord">
-    <meta name="twitter:title" content="Catcord">
-    <meta property="og:title" content="Catcord">
-
-    <title>Catcord</title>
-
+    %svelte.head%
   </head>
-  <body>
-    <!-- React Insertion Point -->
-    <div id="root" />
+  <body class="light">
+    <div id="svelte">%svelte.body%</div>
   </body>
 </html>

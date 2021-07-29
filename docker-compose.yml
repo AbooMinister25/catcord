@@ -6,9 +6,12 @@ services:
       - ./backend/init.sql:/docker-entrypoint-initdb.d/init.sql
     ports:
       - 5432:5432
-    env_file:
-      - ./backend/.env
-
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_SERVER=postgres
+      - POSTGRES_PORT=5432
+      - POSTGRES_DB=postgres
 
   backend:
     build:
@@ -16,13 +19,27 @@ services:
       dockerfile: Dockerfile
     volumes:
       - ./:/backend/app
-    env_file:
-      - ./backend/.env
     ports:
       - "8000:8000"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_SERVER=postgres
+      - POSTGRES_PORT=5432
+      - POSTGRES_DB=postgres
     depends_on:
       - postgres
-
+  
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/frontend/app
+    ports:
+      - "3000:3000"
+    environment:
+      - BACKEND_URL=http://localhost:8000
 
 volumes:
   postgres_data:
