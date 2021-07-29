@@ -7,7 +7,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: catcord-backend
+  IMAGE_NAME: backend
 
 jobs:
   build-and-push-image:
