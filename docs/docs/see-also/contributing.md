@@ -5,51 +5,22 @@ description: Contributing guidelines and instructions.
 slug: /contributing
 ---
 
-# Contributing to Catcord
-If you are interested in contributing to Catcord, follow the guidelines and steps documented below.
+## How to contribute
 
-## Requirements
+Want to contribute? We're always accepting contribution on our
+[GitHub repository](https://github.com/cat-dev-group/catcord) where you can open an
+[issue](https://github.com/cat-dev-group/catcord/issues) or
+[pull request](https://github.com/cat-dev-group/catcord/pulls) to make an improvement,
 
-### All
-- Some experience with [Git](https://git-scm.com/downloads)
-- [A GitHub Account](https://github.com/join)
-- [Docker](https://www.docker.com)
+## Contributing Guidelines
 
-### Frontend
-- [Node.js v14](https://nodejs.org)
-- [Yarn](https://yarnpkg.com/)
+While we're always accepting contributions, Catcord has a short but strict set of contributing
+guidelines.
 
-### Backend
-- [Python 3.8+](https://www.python.org/downloads/)
-- [Poetry](https://python-poetry.org/docs/)
+- Open an issue before you make a PR for a large change. We don't want your work to go to waste
+if that's not a feature/change that's wanted. For smaller changes, go ahead and make them, that's
+usually fine.
 
-## Frontend contributing steps
-1. Create a new fork of the Catcord GitHub repository.
-2. Clone the Catcord GitHub repo you just forked by running `git clone https://www.github.com/YourGithubUsername/catcord` in your terminal.
-3. Run `yarn set version berry && yarn set version latest` to use Yarn 2.
-4. Install dependencies by running `yarn`.
-4. Make your changes/additions to the code.
-5. Run `git add .` to stage your changes.
-6. Run `git commit -m "commit message" -m "commit body"` to commit your changes. Make sure to write a meaningful and concise commit message with a longer explanatory description if additional details are necessary.
-7. Run `git push -u origin branch-name` to push your changes to your forked repo.
-8. Create a PR on the official Catcord repo, and your code will be reviewed and could be merged.
-9. FOLLOW THE CONTRIBUTING GUIDELINES BELOW, WE WON'T MERGE YOUR PR UNLESS YOU DO.
+- Test your code. We don't want to push code that's riddled with bugs into production. Yes, we'll
+test it while reviewing, but it's more work for everyone if you don't do it yourself first.
 
-## Backend contributing steps
-1. Create a new fork of the Catcord GitHub repository.
-2. Clone the Catcord GitHub repo you just forked by running `git clone https://www.github.com/YourGithubUsername/catcord` in your command-line interface.
-3. Initialize a venv by running `poetry shell` and install the dependencies by running `poetry install`.
-4. Make your changes/additions to the code.
-5. Run `git add .` to stage your changes.
-6. Run `git commit -m "commit message" -m "commit body"` to commit your changes. Make sure to write a meaningful and concise commit message with a longer explanatory description if additional details are necessary.
-7. Run `git push -u origin branch-name` to push your changes to your forked repo.
-8. Create a PR on the official Catcord repo, and your code will be reviewed and could be merged.
-9. FOLLOW THE CONTRIBUTING GUIDELINES BELOW, WE WON'T MERGE YOUR PR UNLESS YOU DO.
-
-## Testing
-1. Catcord uses docker and docker-compose for deployment and testing, so make sure that you have a docker ready environment.
-2. Build the docker image by running `docker-compose build`.
-3. Run the docker image by running `docker-compose up`.
-
-## Linting
-Make sure to lint your code before you push. Our backend uses the `black` Python formatter to keep a consistent style throughout our code. You can install black with `pip` and run `black filename.py` to format your code. For the frontend, we use ESLint, for which you can simply run `yarn lint`.

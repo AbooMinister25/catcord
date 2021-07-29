@@ -1,6 +1,3 @@
-const lightCodeTheme = require('prism-react-renderer/themes/github');
-const darkCodeTheme = require('prism-react-renderer/themes/dracula');
-
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
   title: "Catcord",
@@ -46,6 +43,12 @@ module.exports = {
           label: "Docs",
         },
         {
+          type: "doc",
+          docId: "api/intro",
+          position: "left",
+          label: "API Reference",
+        },
+        {
           href: "https://github.com/cat-dev-group/catcord",
           className: "navbar-item-github",
           position: "right",
@@ -87,8 +90,6 @@ module.exports = {
     prism: {
       defaultLanguage: "js",
       plugins: ["line-numbers", "show-language"],
-      theme: lightCodeTheme,
-      darkTheme: darkCodeTheme,
     },
   },
   presets: [
