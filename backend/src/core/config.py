@@ -15,7 +15,7 @@ POSTGRES_DB = config("POSTGRES_DB", cast=str)
 DATABASE_URL = config(
     "DATABASE_URL",
     cast=str,
-    default=f"postgres://"
+    default=f"postgresql+asyncpg://"
     f"{POSTGRES_USER}:"
     f"{POSTGRES_PASSWORD}@"
     f"{POSTGRES_SERVER}:"

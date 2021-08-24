@@ -1,7 +1,18 @@
 import hashlib
 import time
+from dataclasses import dataclass
 
-token_count = 0
+
+@dataclass
+class TokenCount:
+    count: int = 0
+
+    def increment(self):
+        self.count += 1
+        self.count %= 256
+
+
+token_count = TokenCount()
 
 
 def generate_sha256(string: str) -> str:
@@ -11,9 +22,7 @@ def generate_sha256(string: str) -> str:
 
 
 def gensnowflake() -> int:
-    global token_count
     flake = time.time_ns().to_bytes(56, byteorder="big")
-    flake += token_count.to_bytes(8, byteorder="big")
-    token_count += 1
-    token_count %= 256
+    flake += token_count.count.to_bytes(8, byteorder="big")
+    token_count.increment()
     return int.from_bytes(flake, byteorder="big")

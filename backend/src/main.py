@@ -1,16 +1,14 @@
 from uuid import uuid4
 
-from fastapi import FastAPI, Request
+from fastapi import Depends, FastAPI, Request
 from fastapi.exceptions import HTTPException, RequestValidationError
 from fastapi.responses import JSONResponse
 from loguru import logger
 from starlette.exceptions import HTTPException as StarletteHttpException
-from tortoise import Tortoise
 
 import src.core.utils as utils
-import src.database.crud.users as users_crud
 from src.core.schemas import UserBody
-from src.database.database import init_orm
+from src.database.crud.users import UserDAL, get_user_dal
 from src.endpoints import messages, servers, users
 
 app = FastAPI()
@@ -18,16 +16,6 @@ app = FastAPI()
 app.include_router(messages.router)
 app.include_router(servers.router)
 app.include_router(users.router)
-
-
-@app.on_event("startup")
-async def init_orm_startup():
-    await init_orm()
-
-
-@app.on_event("shutdown")
-async def shutdown_orm():
-    await Tortoise.close_connections()
 
 
 @app.exception_handler(StarletteHttpException)
@@ -45,12 +33,14 @@ async def validation_request_handler(request: Request, exc):
 
 
 @app.get("/")
-async def root(request: Request):
+async def root(request: Request, user_dal: UserDAL = Depends(get_user_dal)):
     logger.info(f"GET request to endpoint / from client {request.client.host}")
 
 
 @app.post("/token")
-async def token(request: Request, user_body: UserBody):
+async def token(
+    request: Request, user_body: UserBody, user_dal: UserDAL = Depends(get_user_dal)
+):
     logger.info(f"POST request to endpoint /token from client {request.client.host}")
 
     uid = user_body.uid
@@ -58,12 +48,12 @@ async def token(request: Request, user_body: UserBody):
 
     password_hash = utils.generate_sha256(password)
 
-    authorized = await users_crud.auth_with_password(password_hash, uid)
+    authorized = await user_dal.auth_with_password(password_hash, uid)
     if not authorized:
         return HTTPException(status_code=403, detail="Invalid Credentials")
 
     user_token = str(uuid4())
     token_hash = utils.generate_sha256(user_token)
-    await users_crud.update_user_token(password_hash, uid, token_hash)
+    await user_dal.update_user_token(uid, token_hash)
 
     return {"token": user_token}
