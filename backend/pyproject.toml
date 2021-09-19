@@ -15,6 +15,7 @@ aiofiles = "^0.7.0"
 taskipy = "^1.8.1" # This is a dep because the dockerfile uses taskipy and installs without dev deps
 loguru = "^0.5.3"
 SQLAlchemy = "^1.4.23"
+aioredis = "^2.0.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2"

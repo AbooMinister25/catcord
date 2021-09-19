@@ -1,10 +1,15 @@
 from fastapi import APIRouter, Request
 from loguru import logger
 
+from src.core.ratelimits import Ratelimiter
+
 router = APIRouter()
+
+limiter = Ratelimiter(1, 60, 20)
 
 
 @router.get("/messages")
+@limiter.limit()
 async def messages_get(request: Request):
     logger.info(f"GET request to endpoint /messages from client {request.client.host}")
 
